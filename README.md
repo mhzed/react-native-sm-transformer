@@ -8,5 +8,9 @@ To install, run following command in your react native project root dir.
 
     npm install react-native-sm-transformer
     
+To run react-native server with transformation enabled:
+    
+    ./node_modules/.bin/rnst 
+    
 Take a look at rnst.js to see how to launch react native server with this
 transformer.
