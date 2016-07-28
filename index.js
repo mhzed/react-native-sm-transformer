@@ -31,17 +31,19 @@ module.exports = function (data, callback) {
   let smfile = data.filename + ".map";
 
   if (fs.existsSync(smfile)) {
-    transformer(data, (err, tdata)=>{
+    transformer(data, (err, mod)=>{
       "use strict";
-      var smap = JSON.parse(fs.readFileSync(smfile).toString())
-      tdata.map = smap;
-      callback(null, tdata);
+      if (mod) {
+        var smap = JSON.parse(fs.readFileSync(smfile).toString())
+        mod.map = smap;
+      }
+      callback(null, mod);
     })
 
   } else {
     transformer(data, (err, mod)=>{
       "use strict";
-      if (!mod.map) {
+      if (mod && !mod.map) {
         mod.map = smOneToOne(mod.filename, mod.code)
       }
       return callback(err, mod);
