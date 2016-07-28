@@ -1,0 +1,29 @@
+{
+  "name": "react-native-sm-transformer",
+  "version": "1.0.1",
+  "description": "handles source map transformation for react native server",
+  "main": "index.js",
+  "bin": {
+    "rnst": "./rnst.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhzed/react-native-sm-transformer.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "source",
+    "map",
+    "transform"
+  ],
+  "author": "mhzedd@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhzed/react-native-sm-transformer/issues"
+  },
+  "homepage": "https://github.com/mhzed/react-native-sm-transformer#readme"
+}
