@@ -2,7 +2,8 @@
 
 var transformer = require('react-native/packager/transformer');
 var fs = require("fs");
-var sourceMap = require("source-map")
+var sourceMap = require("source-map");
+var path = require('path');
 
 const lc =  (str) => {
   c = 0
@@ -17,7 +18,7 @@ const smOneToOne = (srcfile, src)=>{
   "use strict";
   let map = new sourceMap.SourceMapGenerator({file:srcfile})
   let n = lc(src)
-  for (let line =1; line <= n; line++)
+  for (let line =1; line <= n + 1; line++)
     map.addMapping({
       source: srcfile,
       original : {line, column:0},
@@ -34,7 +35,13 @@ module.exports = function (data, callback) {
     transformer(data, (err, mod)=>{
       "use strict";
       if (mod) {
-        var smap = JSON.parse(fs.readFileSync(smfile).toString())
+        var smap = JSON.parse(fs.readFileSync(smfile).toString());
+
+        // Use absolute paths so further transformations would be able to resolve original files
+        smap.sources = smap.sources.map(source => {
+          return path.join(path.dirname(smfile), source);
+        });
+
         mod.map = smap;
       }
       callback(null, mod);
