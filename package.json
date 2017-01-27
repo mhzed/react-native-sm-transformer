@@ -1,6 +1,6 @@
 {
   "name": "react-native-sm-transformer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "handles source map transformation for react native server",
   "main": "index.js",
   "bin": {
